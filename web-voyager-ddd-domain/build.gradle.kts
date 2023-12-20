@@ -7,5 +7,8 @@ version = rootProject.extra["projectVersion"]!!
 
 
 dependencies {
-    testImplementation(project(":web-voyager-ddd-infra"))
+    implementation("org.springframework.boot:spring-boot-starter-web:${rootProject.extra["spring.boot"]}")
+    implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
+    implementation("org.projectlombok:lombok:1.18.28")
+    annotationProcessor("org.projectlombok:lombok:1.18.28")
 }

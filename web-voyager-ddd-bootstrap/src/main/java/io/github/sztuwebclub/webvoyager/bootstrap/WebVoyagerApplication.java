@@ -1,13 +1,15 @@
 package io.github.sztuwebclub.webvoyager.bootstrap;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"io.github.sztuwebclub.webvoyager"})
-@EntityScan(basePackages = {"io.github.sztuwebclub.webvoyager"})
+@EnableAsync
+@ComponentScan(basePackages = "io.github.sztuwebclub.webvoyager.application")
+@MapperScan(basePackages = "io.github.sztuwebclub.webvoyager.infra.po")
 public class WebVoyagerApplication {
 
     public static void main(String[] args) {

@@ -13,6 +13,13 @@ extra["spring.boot"] = "3.2.0"
 group = "io.github.sztuwebclub.webvoyager"
 version = extra["projectVersion"]!!
 
+buildscript {
+    repositories {
+        maven {
+            setUrl("https://maven.aliyun.com/repository/gradle-plugin/")
+        }
+    }
+}
 
 allprojects {
     repositories {
@@ -20,9 +27,15 @@ allprojects {
             setUrl("https://maven.aliyun.com/repository/public/")
         }
         maven {
-            setUrl("https://maven.aliyun.com/repository/spring/")
+            setUrl("https://maven.aliyun.com/repository/gradle-plugin/")
         }
-        mavenCentral()
+        maven {
+            setUrl("https://maven.aliyun.com/repository/central/")
+        }
+    }
+    tasks.withType<JavaCompile> {
+        sourceCompatibility = JavaVersion.VERSION_17.toString()
+        targetCompatibility = JavaVersion.VERSION_17.toString()
     }
 }
 
@@ -31,13 +44,6 @@ subprojects {
 
     tasks.withType<Test>().configureEach {
         useJUnitPlatform()
-    }
-}
-
-allprojects {
-    tasks.withType<JavaCompile> {
-        sourceCompatibility = JavaVersion.VERSION_17.toString()
-        targetCompatibility = JavaVersion.VERSION_17.toString()
     }
 }
 
