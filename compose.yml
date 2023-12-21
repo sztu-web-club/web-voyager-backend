@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=web_voyager'
+      - 'MYSQL_ROOT_PASSWORD=elysiaEgo#@#1026'
+    ports:
+      - '3307:3306'
+    labels:
+      org.springframework.boot.service-connection: mysql
+  redis:
+    image: 'redis:latest'
+    ports:
+      - '6378:6379'
