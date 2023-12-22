@@ -14,6 +14,6 @@ dependencies {
     testImplementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.22.0")
 
     implementation("org.springframework.boot:spring-boot-starter-web:${rootProject.extra["spring.boot"]}")
-    implementation("org.projectlombok:lombok:1.18.28")
-    annotationProcessor("org.projectlombok:lombok:1.18.28")
+    implementation("org.projectlombok:lombok:${rootProject.extra["lombok"]}")
+    annotationProcessor("org.projectlombok:lombok:${rootProject.extra["lombok"]}")
 }

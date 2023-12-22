@@ -1,5 +1,4 @@
 package io.github.sztuwebclub.webvoyager.domain.user.service;
 
-public interface IUserService {
-
+public interface IProblemService {
 }

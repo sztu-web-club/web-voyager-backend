@@ -8,6 +8,6 @@ version = rootProject.extra["projectVersion"]!!
 
 dependencies {
     implementation(project(":web-voyager-ddd-domain"))
-    implementation("org.projectlombok:lombok:1.18.28")
-    annotationProcessor("org.projectlombok:lombok:1.18.28")
+    implementation("org.projectlombok:lombok:${rootProject.extra["lombok"]}")
+    annotationProcessor("org.projectlombok:lombok:${rootProject.extra["lombok"]}")
 }

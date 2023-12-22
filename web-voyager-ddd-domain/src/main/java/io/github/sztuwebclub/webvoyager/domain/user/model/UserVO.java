@@ -13,7 +13,13 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class UserVO {
-    private String userId;
-    private String userNickname;
-    private Date createTime;
+    private Long id;
+    private String username;
+    private Integer entryyear;
+    private String userid;
+    private String nickname;
+    private Date createtime;
+    private String ssoid;
+    private String major;
+    private Object role;
 }

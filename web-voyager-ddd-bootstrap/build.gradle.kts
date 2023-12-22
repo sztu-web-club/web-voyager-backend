@@ -15,6 +15,7 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.33")
     implementation("com.alibaba:druid-spring-boot-starter:1.2.20")
     implementation("com.baomidou:mybatis-plus-boot-starter:3.5.4.1")
+    implementation("io.jsonwebtoken:jjwt-api:0.12.3")
     implementation("org.springframework.boot:spring-boot-starter-data-redis:${rootProject.extra["spring.boot"]}")
     implementation("org.springframework.boot:spring-boot-starter-security:${rootProject.extra["spring.boot"]}")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose:${rootProject.extra["spring.boot"]}")
