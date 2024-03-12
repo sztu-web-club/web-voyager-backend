@@ -3,11 +3,11 @@ plugins {
 }
 
 group = "io.github.sztuwebclub.webvoyager"
-version = rootProject.extra["projectVersion"]!!
+version = libs.versions.project.get()
 
 
 dependencies {
     implementation(project(":web-voyager-ddd-domain"))
-    implementation("org.projectlombok:lombok:${rootProject.extra["lombok"]}")
-    annotationProcessor("org.projectlombok:lombok:${rootProject.extra["lombok"]}")
+    implementation(libs.lombok)
+    annotationProcessor(libs.lombok)
 }

@@ -5,12 +5,8 @@ plugins {
     id("io.spring.dependency-management") version "1.1.4"
 }
 
-extra["projectVersion"] = "0.0.1-SNAPSHOT"
-extra["spring.boot"] = "3.2.0"
-extra["lombok"] = "1.18.28"
-
 group = "io.github.sztuwebclub.webvoyager"
-version = extra["projectVersion"]!!
+version = libs.versions.project.get()
 
 buildscript {
     repositories {

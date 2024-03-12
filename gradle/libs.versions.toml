@@ -1,0 +1,36 @@
+[versions]
+# @keep
+project = "0.0.1-SNAPSHOT"
+springboot = "3.2.0"
+mysql = "8.3.0"
+lombok = "1.18.30"
+druid = "1.2.20"
+mybatisplus = "3.5.4.1"
+jjwt = "0.12.3"
+log4j = "2.22.0"
+jakarta = "2.1.1"
+
+[libraries]
+# springboot
+springboot-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springboot" }
+springboot-data-redis = { group = "org.springframework.boot", name = "spring-boot-starter-data-redis", version.ref = "springboot" }
+springboot-data-jdbc = { group = "org.springframework.boot", name = "spring-boot-starter-data-jdbc", version.ref = "springboot" }
+springboot-security = { group = "org.springframework.boot", name = "spring-boot-starter-security", version.ref = "springboot" }
+springboot-compose = { group = "org.springframework.boot", name = "spring-boot-docker-compose", version.ref = "springboot" }
+springboot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "springboot" }
+
+# database
+mybatis-plus = { group = "com.baomidou", name = "mybatis-plus-boot-starter", version.ref = "mybatisplus" }
+alibaba-druid = { group = "com.alibaba", name = "druid-spring-boot-starter", version.ref = "druid"}
+mysql = { group = "com.mysql", name = "mysql-connector-j", version.ref = "mysql" }
+jakarta =  { group = "jakarta.annotation", name = "jakarta.annotation-api", version.ref = "jakarta" }
+
+# util
+jjwt = { group = "io.jsonwebtoken", name = "jjwt-api", version.ref = "jjwt" }
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
+log4j-core = { group = "org.apache.logging.log4j", name = "log4j-core", version.ref = "log4j" }
+log4j-slf4j2 = { group = "org.apache.logging.log4j", name = "log4j-slf4j2-impl", version.ref = "log4j" }
+
+[plugins]
+springboot = { id = "org.springframework.boot", version.ref = "springboot" }
+spring-dependency = { id = "io.spring.dependency-management", version.ref = "springboot" }
