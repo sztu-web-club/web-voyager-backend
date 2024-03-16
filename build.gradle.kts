@@ -1,7 +1,7 @@
 plugins {
     java
     `java-library`
-    id("org.springframework.boot") version "3.2.0"
+    id("org.springframework.boot") version "3.2.3"
     id("io.spring.dependency-management") version "1.1.4"
 }
 
@@ -29,8 +29,9 @@ allprojects {
         }
     }
     tasks.withType<JavaCompile> {
-        sourceCompatibility = JavaVersion.VERSION_17.toString()
-        targetCompatibility = JavaVersion.VERSION_17.toString()
+        options.encoding = "utf-8"
+        sourceCompatibility = JavaVersion.VERSION_21.toString()
+        targetCompatibility = JavaVersion.VERSION_21.toString()
     }
 }
 
@@ -42,15 +43,6 @@ subprojects {
     }
 }
 
-tasks.bootJar {
-    enabled = false
-}
-
 tasks.jar {
     enabled = true
-}
-
-tasks.wrapper {
-    distributionType = Wrapper.DistributionType.BIN
-    distributionUrl = "https://mirrors.cloud.tencent.com/gradle/gradle-8.4-bin.zip"
 }

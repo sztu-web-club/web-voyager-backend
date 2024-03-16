@@ -1,4 +1,4 @@
-package io.github.sztuwebclub.webvoyager.infra.enumerate;
+package io.github.sztuwebclub.webvoyager.domain.user;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import lombok.AllArgsConstructor;

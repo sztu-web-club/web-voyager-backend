@@ -5,7 +5,6 @@ plugins {
 group = "io.github.sztuwebclub.webvoyager"
 version = libs.versions.project.get()
 
-
 dependencies {
     implementation(project(":web-voyager-ddd-domain"))
     implementation(libs.lombok)

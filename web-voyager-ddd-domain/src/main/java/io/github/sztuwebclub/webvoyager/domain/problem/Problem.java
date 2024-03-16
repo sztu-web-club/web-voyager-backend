@@ -1,15 +1,14 @@
-package io.github.sztuwebclub.webvoyager.domain.user.model;
+package io.github.sztuwebclub.webvoyager.domain.problem;
 
-import lombok.AllArgsConstructor;
+import io.github.sztuwebclub.webvoyager.constant.AuditableEntity;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Builder
-public class ProblemVO {
+public class Problem extends AuditableEntity {
     private Long id;
     private String title;
     private String description;

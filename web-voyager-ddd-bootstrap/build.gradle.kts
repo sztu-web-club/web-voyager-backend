@@ -19,6 +19,7 @@ dependencies {
     implementation(libs.springboot.data.redis)
     implementation(libs.springboot.data.jdbc)
     implementation(libs.springboot.security)
+    implementation(libs.springboot.actuator)
     developmentOnly(libs.springboot.compose)
 }
 

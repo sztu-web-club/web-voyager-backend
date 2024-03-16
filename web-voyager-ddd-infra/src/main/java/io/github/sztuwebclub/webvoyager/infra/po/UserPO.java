@@ -1,10 +1,9 @@
 package io.github.sztuwebclub.webvoyager.infra.po;
 
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.sztuwebclub.webvoyager.infra.enumerate.UserRoleEnum;
+import io.github.sztuwebclub.webvoyager.domain.user.UserRoleEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

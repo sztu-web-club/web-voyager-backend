@@ -1,15 +1,15 @@
-package io.github.sztuwebclub.webvoyager.application.http.Assembler;
+package io.github.sztuwebclub.webvoyager.application.http.assembler;
 
 import io.github.sztuwebclub.webvoyager.api.model.DTO.UserLoginRequestDTO;
 import io.github.sztuwebclub.webvoyager.api.model.response.UserLoginResp;
-import io.github.sztuwebclub.webvoyager.domain.user.model.UserAuthVO;
+import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserAuthAssembler {
-    public static UserAuthVO UserLoginRequestDTOToUserAuthVO(UserLoginRequestDTO userLoginRequestDTO){
-        UserAuthVO userAuthVO = new UserAuthVO();
-        return userAuthVO.builder()
+    public static UserAuth UserLoginRequestDTOToUserAuthVO(UserLoginRequestDTO userLoginRequestDTO){
+        return UserAuth.builder()
                 .username(userLoginRequestDTO.getUsername())
                 .password(userLoginRequestDTO.getPassword())
                 .uuid(userLoginRequestDTO.getUuid())
@@ -17,9 +17,8 @@ public class UserAuthAssembler {
                 .build();
     }
 
-    public static UserLoginResp UserLoginVOToUserLoginResp(UserAuthVO userAuthVO){
-        UserLoginResp userLoginResp = new UserLoginResp();
-        return userLoginResp.builder()
+    public static UserLoginResp UserLoginVOToUserLoginResp(UserAuth userAuthVO){
+        return UserLoginResp.builder()
                 .id(userAuthVO.getId())
                 .token(userAuthVO.getToken())
                 .build();
