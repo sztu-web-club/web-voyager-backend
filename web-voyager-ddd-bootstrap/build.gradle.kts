@@ -12,7 +12,6 @@ dependencies {
     implementation(project(":web-voyager-ddd-api"))
     implementation(project(":web-voyager-ddd-application"))
 
-    runtimeOnly(libs.mysql)
     implementation(libs.alibaba.druid)
     implementation(libs.mybatis.plus)
     implementation(libs.springboot.web)
@@ -20,6 +19,8 @@ dependencies {
     implementation(libs.springboot.data.jdbc)
     implementation(libs.springboot.security)
     implementation(libs.springboot.actuator)
+
+    runtimeOnly(libs.mysql)
     developmentOnly(libs.springboot.compose)
 }
 

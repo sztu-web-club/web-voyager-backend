@@ -8,11 +8,12 @@ import java.util.Date;
 import java.util.Map;
 
 public class JwtUtil {
+    private JwtUtil() {}
     // TODO: Use asymmetric key
     private static final SecretKey KEY = Jwts.SIG.HS256.key().build();
 
     // TODO: Type-safe claims
-    public static String createJWT(String secretKey, long ttlMillis, Map<String, Object> claims) {
+    public static String createJWT(long ttlMillis, Map<String, Object> claims) {
 
         long expMillis = System.currentTimeMillis() + ttlMillis;
         Date exp = new Date(expMillis);
@@ -26,7 +27,7 @@ public class JwtUtil {
         return builder.compact();
     }
 
-    public static Claims parseJWT(String secretKey, String token) {
+    public static Claims parseJWT(String token) {
         return Jwts.parser()
                 .verifyWith(KEY)
                 .build()

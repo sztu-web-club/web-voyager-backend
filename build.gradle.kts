@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 plugins {
     java
     `java-library`
@@ -42,6 +44,16 @@ subprojects {
         useJUnitPlatform()
     }
 }
+
+val installGitHook = tasks.register("installGitHooks", Copy::class) {
+    group = "Git Hook"
+    description = "copy git hook to .git"
+    from(project.rootDir.resolve("scripts/pre-commit"))
+    into(project.rootDir.resolve(".git/hooks"))
+    fileMode = 775
+}
+
+tasks.getByName("prepareKotlinBuildScriptModel").dependsOn(installGitHook)
 
 tasks.jar {
     enabled = true

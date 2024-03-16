@@ -8,10 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public enum JwtProperties {
-    USER("123456",7200000,"token"),
-    ADMIN("123456",7200000,"token");
+    USER(7200000,"token"),
+    ADMIN(7200000,"token");
 
-    private String SecretKey;
-    private long Ttl;
-    private String TokenName;
+    private long ttl;
+    private String tokenName;
 }

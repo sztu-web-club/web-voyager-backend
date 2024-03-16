@@ -11,12 +11,12 @@ dependencies {
     implementation(project(":web-voyager-ddd-domain"))
 
     implementation(libs.log4j.core)
-    testImplementation(libs.log4j.slf4j2)
-
     implementation(libs.springboot.web)
     implementation(libs.lombok)
-    annotationProcessor(libs.lombok)
-
     implementation(libs.jjwt)
+
+    testImplementation(libs.log4j.slf4j2)
+
+    annotationProcessor(libs.lombok)
     annotationProcessor(libs.jjwt)
 }

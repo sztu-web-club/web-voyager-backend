@@ -1,15 +1,17 @@
-package io.github.sztuwebclub.webvoyager.api.model.response;
+package io.github.sztuwebclub.webvoyager.api.user.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserLoginResp {
+public class UserLoginResp implements Serializable {
     private Long id;
     private String token;
 }

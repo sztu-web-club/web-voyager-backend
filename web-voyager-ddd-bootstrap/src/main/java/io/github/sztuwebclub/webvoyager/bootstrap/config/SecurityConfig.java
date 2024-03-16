@@ -16,7 +16,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(
-                (authz) ->
+                authz ->
                         authz.anyRequest().permitAll()
                 )
                 .csrf(AbstractHttpConfigurer::disable)

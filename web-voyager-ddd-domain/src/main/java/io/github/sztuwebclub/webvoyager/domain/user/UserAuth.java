@@ -1,4 +1,4 @@
-package io.github.sztuwebclub.webvoyager.domain.user.model;
+package io.github.sztuwebclub.webvoyager.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
