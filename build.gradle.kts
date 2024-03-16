@@ -55,6 +55,10 @@ val installGitHook = tasks.register("installGitHooks", Copy::class) {
 
 tasks.getByName("prepareKotlinBuildScriptModel").dependsOn(installGitHook)
 
+tasks.bootJar {
+    enabled = false
+}
+
 tasks.jar {
     enabled = true
 }
