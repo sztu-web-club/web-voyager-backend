@@ -16,4 +16,7 @@ dependencies {
     implementation(libs.springboot.web)
     implementation(libs.lombok)
     annotationProcessor(libs.lombok)
+
+    implementation(libs.jjwt)
+    annotationProcessor(libs.jjwt)
 }

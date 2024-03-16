@@ -15,7 +15,6 @@ dependencies {
     runtimeOnly(libs.mysql)
     implementation(libs.alibaba.druid)
     implementation(libs.mybatis.plus)
-    implementation(libs.jjwt)
     implementation(libs.springboot.web)
     implementation(libs.springboot.data.redis)
     implementation(libs.springboot.data.jdbc)
