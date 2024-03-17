@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @EnableAsync
-@ComponentScan(basePackages = "io.github.sztuwebclub.webvoyager.application")
+@ComponentScan(basePackages = { "io.github.sztuwebclub.webvoyager.application", "io.github.sztuwebclub.webvoyager.bootstrap" })
 @MapperScan(basePackages = "io.github.sztuwebclub.webvoyager.infra.po")
 public class WebVoyagerApplication {
 
