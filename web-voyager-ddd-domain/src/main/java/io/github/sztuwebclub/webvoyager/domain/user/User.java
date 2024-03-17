@@ -17,5 +17,5 @@ public class User extends AuditableEntity {
     private Date createtime;
     private String ssoid;
     private String major;
-    private Object role;
+    private UserRoleEnum role;
 }
