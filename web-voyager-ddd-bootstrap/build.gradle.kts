@@ -24,6 +24,10 @@ dependencies {
     runtimeOnly(libs.mysql)
     developmentOnly(libs.springboot.compose)
     testImplementation(libs.log4j.slf4j2)
+
+    dependencies {
+        implementation("org.mybatis:mybatis-spring:3.0.3")
+    }
 }
 
 tasks.bootJar {

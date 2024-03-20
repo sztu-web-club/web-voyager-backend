@@ -19,4 +19,5 @@ dependencies {
 
     annotationProcessor(libs.lombok)
     annotationProcessor(libs.jjwt)
+
 }

@@ -11,17 +11,16 @@ public class UserAuthAssembler {
     private UserAuthAssembler() {}
     public static UserAuth userLoginRequestDTOToUserAuthVO(UserLoginRequest userLoginRequest){
         return UserAuth.builder()
+                .id((long)1)
                 .username(userLoginRequest.getUsername())
                 .password(userLoginRequest.getPassword())
-                .uuid(userLoginRequest.getUuid())
-                .timestamp(userLoginRequest.getTimestamp())
                 .build();
     }
 
     public static UserLoginResp userLoginVOToUserLoginResp(UserAuth userAuthVO){
         return UserLoginResp.builder()
                 .id(userAuthVO.getId())
-                .token(userAuthVO.getToken())
+                .token("")
                 .build();
     }
 }

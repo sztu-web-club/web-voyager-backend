@@ -9,4 +9,5 @@ dependencies {
     implementation(project(":web-voyager-ddd-domain"))
     implementation(libs.lombok)
     annotationProcessor(libs.lombok)
+
 }
