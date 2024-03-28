@@ -3,6 +3,7 @@ spring:
     name: web_voyager
   profiles:
     active: dev
+
 server:
   servlet:
     encoding:

@@ -1,10 +1,13 @@
 package io.github.sztuwebclub.webvoyager.infra.repo;
 
 import io.github.sztuwebclub.webvoyager.domain.user.IUserRepo;
+import io.github.sztuwebclub.webvoyager.domain.user.User;
 import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
 import io.github.sztuwebclub.webvoyager.infra.dao.UserMapper;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class UserRepo implements IUserRepo {
@@ -14,6 +17,11 @@ public class UserRepo implements IUserRepo {
     @Override
     public UserAuth getUserAuthByUsername(String username) {
         return userDao.getUserAuthByUsername(username);
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return userDao.getUserList();
     }
 
 }

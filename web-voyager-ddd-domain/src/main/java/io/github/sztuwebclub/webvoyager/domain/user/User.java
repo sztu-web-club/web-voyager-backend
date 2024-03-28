@@ -4,6 +4,7 @@ import io.github.sztuwebclub.webvoyager.constant.AuditableEntity;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -18,4 +19,8 @@ public class User extends AuditableEntity {
     private String ssoid;
     private String major;
     private UserRoleEnum role;
+
+    public static List<User> list(IUserRepo userRepo){
+        return userRepo.getUserList();
+    }
 }

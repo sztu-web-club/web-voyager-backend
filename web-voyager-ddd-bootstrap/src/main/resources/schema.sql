@@ -6,7 +6,7 @@ create table if not exists contest
     start_time datetime     not null comment '开始时间',
     end_time   datetime     not null comment '结束时间',
     desp       text         not null comment '比赛描述',
-    private    tinyint(1)   not null comment '是否不公开'
+    isprivate  tinyint(1)   not null comment '是否不公开'
 );
 
 create table if not exists problem
@@ -14,14 +14,26 @@ create table if not exists problem
     id           bigint auto_increment comment '题目id'
         primary key,
     title        varchar(200)       not null comment '题目标题',
-    description  text               not null comment '题目描述',
-    hint         text               not null comment '题目提示',
     time_limit   double default 1   not null comment '题目时间限制(s)',
     memory_limit int    default 256 not null comment '题目内存限制(MB)',
     total_solved int    default 0   not null comment '平台上解出本题的用户数',
     total_submit int    default 0   not null comment '平台上本题的提交数',
     author_id    int                not null comment '本题作者的id',
-    author_name  int                not null comment '本题作者的昵称'
+    author_name  varchar(20)        not null comment '本题作者的昵称'
+);
+
+create table if not exists problem_details
+(
+    id            bigint auto_increment comment '题目id'
+        primary key,
+    description   text not null comment '题目描述',
+    hint_input    text not null comment '输入提示',
+    hint_output   text not null comment '输出提示',
+    sample_input  text not null comment '输入样例',
+    sample_output text not null comment '输出样例',
+    hint          text not null comment '提示',
+    input         text not null comment '测试输入集',
+    output        text not null comment '测试输出集'
 );
 
 create table if not exists solution

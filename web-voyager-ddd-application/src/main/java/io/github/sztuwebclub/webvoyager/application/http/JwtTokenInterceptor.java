@@ -16,7 +16,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 @Slf4j
 @Component
-public class JwtTokenAdminInterceptor implements HandlerInterceptor {
+public class JwtTokenInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) throws Exception {
         if (!(handler instanceof HandlerMethod)) {
@@ -28,7 +28,7 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
         try {
             log.info("jwt校验:{}", token);
             Claims claims = JwtUtil.parseJWT(token);
-            Long userId = Long.valueOf(claims.get(JwtClaimsEnum.USER_ID.name()).toString());
+            Integer userId = Integer.valueOf(claims.get(JwtClaimsEnum.USER_ID.name()).toString());
             log.info("当前员工id: ", userId);
             ContextUtil.setCurrentId(userId);
             return true;

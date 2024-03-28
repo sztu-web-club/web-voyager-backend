@@ -34,12 +34,6 @@ public class ProblemPO implements Serializable {
     @Size(max= 200,message="编码长度不能超过200")
     private String title;
     /**
-    * 题目描述
-    */
-    @NotBlank(message="[题目描述]不能为空")
-    @Size(max= 65535,message="编码长度不能超过65535")
-    private String description;
-    /**
     * 题目提示
     */
     @Size(max= 65535,message="编码长度不能超过65535")
@@ -69,5 +63,9 @@ public class ProblemPO implements Serializable {
     */
     @NotNull(message="[本题作者的id]不能为空")
     private Integer authorId;
-
+    /**
+     * 本题作者的昵称
+     */
+    @NotNull(message = "[本题作者的昵称]不能为空")
+    private String authorName;
 }

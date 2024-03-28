@@ -4,12 +4,9 @@ import io.github.sztuwebclub.webvoyager.api.user.request.UserLoginRequest;
 import io.github.sztuwebclub.webvoyager.api.user.response.UserLoginResp;
 import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
 
-import org.springframework.stereotype.Component;
+public class UserAssembler {
 
-@Component
-public class UserAuthAssembler {
-    private UserAuthAssembler() {}
-    public static UserAuth userLoginRequestDTOToUserAuthVO(UserLoginRequest userLoginRequest){
+    public static UserAuth userLoginRequestToUserAuth(UserLoginRequest userLoginRequest){
         return UserAuth.builder()
                 .id((long)1)
                 .username(userLoginRequest.getUsername())
@@ -17,10 +14,11 @@ public class UserAuthAssembler {
                 .build();
     }
 
-    public static UserLoginResp userLoginVOToUserLoginResp(UserAuth userAuthVO){
+    public static UserLoginResp userAuthToUserLoginResp(UserAuth userAuthVO){
         return UserLoginResp.builder()
                 .id(userAuthVO.getId())
                 .token("")
                 .build();
     }
+
 }
