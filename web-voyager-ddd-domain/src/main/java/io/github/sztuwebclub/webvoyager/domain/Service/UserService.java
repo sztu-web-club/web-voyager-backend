@@ -1,13 +1,13 @@
 package io.github.sztuwebclub.webvoyager.domain.Service;
 
+import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import io.github.sztuwebclub.webvoyager.domain.user.User;
 import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
-
-import java.util.List;
 
 public interface UserService {
     String login(UserAuth userAuthVO);
 
+    PageResult<User> pageQuery(Integer page, Integer pagesize, String title);
 
-    List<User> list();
+    User getUserById(Integer id);
 }

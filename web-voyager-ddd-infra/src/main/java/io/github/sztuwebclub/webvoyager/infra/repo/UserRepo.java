@@ -14,14 +14,25 @@ public class UserRepo implements IUserRepo {
 
     @Resource
     private UserMapper userDao;
+
     @Override
-    public UserAuth getUserAuthByUsername(String username) {
-        return userDao.getUserAuthByUsername(username);
+    public Integer userCount(String username) {
+        return userDao.userCount(username);
     }
 
     @Override
-    public List<User> getUserList() {
-        return userDao.getUserList();
+    public List<User> pageQuery(Integer start, Integer pagesize, String username) {
+        return userDao.pageQuery(start,pagesize,username);
+    }
+
+    @Override
+    public User getUserById(Integer id) {
+        return userDao.getUserById(id);
+    }
+
+    @Override
+    public UserAuth getUserAuthByUsername(String username) {
+        return userDao.getUserAuthByUsername(username);
     }
 
 }

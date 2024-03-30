@@ -22,7 +22,7 @@ public class SolutionController {
     private SolutionService solutionService;
 
     @PostMapping("/solution/submit/{id}")
-    public Response<String> submit(@PathVariable Integer id, @RequestBody SolutionSubmitRequest solutionSubmitRequest){
+    public Response<String> submit(@PathVariable("id") Integer id, @RequestBody SolutionSubmitRequest solutionSubmitRequest){
         log.info("提交题解");
         Solution solution = SolutionAssembler.solutionSubmitRequestToSolution(solutionSubmitRequest);
         solution.setProblemid(id);

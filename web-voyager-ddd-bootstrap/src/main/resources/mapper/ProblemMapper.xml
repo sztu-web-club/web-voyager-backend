@@ -15,7 +15,7 @@
         SELECT id, title, time_limit, memory_limit, total_solved, total_submit, author_id, author_name
         FROM problem
         <include refid="whereTitleLike"></include>
-        ORDER BY id DESC
+        ORDER BY id asc
         <if test="start != null and pagesize != null">
             LIMIT #{start},#{pagesize}
         </if>

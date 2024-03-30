@@ -19,15 +19,12 @@ public class ProblemServiceImpl implements ProblemService {
 
     @Override
     public PageResult<Problem> pageQuery(Integer page, Integer pagesize, String title) {
-        Integer total = problemRepo.problemCount(title);
-        Integer start = (page - 1)*pagesize + 1;
-        List<Problem> resultList = problemRepo.pageQuery(start, pagesize, title);
-        return new PageResult(total, start, pagesize, resultList);
+        return Problem.pageQuery(page,pagesize,title,problemRepo);
     }
 
     @Override
     public Problem getProblemById(Integer id) {
-        return problemRepo.getProblemById(id);
+        return Problem.getPrblemById(id,problemRepo);
     }
 
     @Override

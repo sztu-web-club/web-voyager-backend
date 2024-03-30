@@ -1,8 +1,5 @@
 package io.github.sztuwebclub.webvoyager.infra.repo;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.github.sztuwebclub.webvoyager.domain.problem.IProblemRepo;
 import io.github.sztuwebclub.webvoyager.domain.problem.Problem;
 import io.github.sztuwebclub.webvoyager.domain.problem.ProblemDetails;
@@ -22,7 +19,7 @@ public class ProblemRepo implements IProblemRepo {
 
     @Override
     public Integer problemCount(String title) {
-        return Math.toIntExact(problemDao.problemCount(title));
+        return problemDao.problemCount(title);
     }
 
     @Override
@@ -37,6 +34,6 @@ public class ProblemRepo implements IProblemRepo {
 
     @Override
     public ProblemDetails getProblemDeatilsById(Integer id) {
-        return problemDao.getProblemDeatilsById(id);
+        return problemDatailsDao.getProblemDeatilsById(id);
     }
 }

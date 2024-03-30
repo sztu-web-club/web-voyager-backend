@@ -31,7 +31,8 @@ public class ProblemController {
     }
 
     @GetMapping("/problem/info/{id}")
-    public Response<ProblemInfoResp> info(@PathVariable Integer id){
+    public Response<ProblemInfoResp> info(@PathVariable("id") Integer id){
+        log.info("问题详细信息获取");
         Problem problem = problemService.getProblemById(id);
         ProblemDetails problemDetails = problemService.getProblemDetailsById(id);
         ProblemInfoResp problemInfoResp = ProblemAssembler.problemWithDetailsToProblemInfoResp(problem,problemDetails);

@@ -2,11 +2,33 @@ create table if not exists contest
 (
     id         bigint auto_increment
         primary key,
-    name       varchar(200) not null comment '比赛名字',
+    title      varchar(200) not null comment '比赛名字',
     start_time datetime     not null comment '开始时间',
     end_time   datetime     not null comment '结束时间',
     desp       text         not null comment '比赛描述',
     isprivate  tinyint(1)   not null comment '是否不公开'
+);
+
+
+create table if not exists contest_problem
+(
+    problem_id int default 0 not null comment '问题id',
+    contest_id int default 0 not null comment '比赛id',
+    title      varchar(200)  not null comment '比赛标题',
+    index Index_contest_id(contest_id)
+);
+
+create table if not exists topic
+(
+    topic_id    bigint auto_increment              not null comment '留言id'
+        primary key,
+    user_id     int                                not null comment '用户id',
+    content     varchar(255)                       not null comment '留言信息',
+    reply       int default 0                      not null comment '正数回复的topic_id，负数被回复次数',
+    public_show tinyint default 0                  not null comment '0公开,1私密',
+    contest_id  int default 0                      not null comment '比赛id',
+    in_date     datetime default current_timestamp not null comment '留言时间',
+    problem_id  int                                not null comment '问题id'
 );
 
 create table if not exists problem

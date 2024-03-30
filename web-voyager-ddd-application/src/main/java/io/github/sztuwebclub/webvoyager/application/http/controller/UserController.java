@@ -1,12 +1,17 @@
 package io.github.sztuwebclub.webvoyager.application.http.controller;
 
 import io.github.sztuwebclub.webvoyager.api.user.request.UserLoginRequest;
+import io.github.sztuwebclub.webvoyager.api.user.response.ProblemInfoResp;
 import io.github.sztuwebclub.webvoyager.api.user.response.UserListResp;
 import io.github.sztuwebclub.webvoyager.api.user.response.UserLoginResp;
+import io.github.sztuwebclub.webvoyager.application.http.assembler.ProblemAssembler;
 import io.github.sztuwebclub.webvoyager.application.http.assembler.UserAssembler;
 import io.github.sztuwebclub.webvoyager.constant.ResponseCode;
+import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import io.github.sztuwebclub.webvoyager.constant.model.Response;
 import io.github.sztuwebclub.webvoyager.domain.Service.UserService;
+import io.github.sztuwebclub.webvoyager.domain.problem.Problem;
+import io.github.sztuwebclub.webvoyager.domain.problem.ProblemDetails;
 import io.github.sztuwebclub.webvoyager.domain.user.User;
 import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
 import jakarta.annotation.Resource;
@@ -31,15 +36,25 @@ public class UserController {
                 .build();
     }
 
-    @GetMapping("/user/list")
-    public Response<UserListResp> list(){
+    @GetMapping("/user/page")
+    public Response<PageResult<User>> list(@RequestParam("page")Integer page,@RequestParam("pagesize")Integer pagesize,@RequestParam("username")String username){
         log.info("用户列表获取");
-        List<User> userList = userService.list();
-        UserListResp userListResp = new UserListResp(userList);
-        return Response.<UserListResp>builder()
+        PageResult<User> pageResult = userService.pageQuery(page,pagesize,username);
+        return Response.<PageResult<User>>builder()
                 .code(ResponseCode.SUCCESS.getCode())
                 .info(ResponseCode.SUCCESS.getInfo())
-                .data(userListResp)
+                .data(pageResult)
+                .build();
+    }
+
+    @GetMapping("/user/info/{id}")
+    public Response<User> info(@PathVariable("id") Integer id){
+        log.info("用户详细信息获取");
+        User user = userService.getUserById(id);
+        return Response.<User>builder()
+                .code(ResponseCode.SUCCESS.getCode())
+                .info(ResponseCode.SUCCESS.getInfo())
+                .data(user)
                 .build();
     }
 

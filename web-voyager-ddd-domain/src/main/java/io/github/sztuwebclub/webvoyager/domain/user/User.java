@@ -1,15 +1,17 @@
 package io.github.sztuwebclub.webvoyager.domain.user;
 
 import io.github.sztuwebclub.webvoyager.constant.AuditableEntity;
+import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Builder
-public class User extends AuditableEntity {
+public class User extends AuditableEntity implements Serializable {
     private Long id;
     private String username;
     private Integer entryyear;
@@ -20,7 +22,15 @@ public class User extends AuditableEntity {
     private String major;
     private UserRoleEnum role;
 
-    public static List<User> list(IUserRepo userRepo){
-        return userRepo.getUserList();
+    public static PageResult<User> pageQuery(Integer page, Integer pagesize, String username, IUserRepo userRepo) {
+        Integer total = userRepo.userCount(username);
+        Integer start = (page - 1)*pagesize;
+        List<User> resultList = userRepo.pageQuery(start, pagesize, username);
+        return new PageResult<>(total, start + 1, pagesize, resultList);
     }
+
+    public static User getUserById(Integer id, IUserRepo userRepo) {
+        return userRepo.getUserById(id);
+    }
+
 }

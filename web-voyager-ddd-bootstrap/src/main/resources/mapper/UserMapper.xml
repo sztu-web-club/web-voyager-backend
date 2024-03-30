@@ -3,4 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.github.sztuwebclub.webvoyager.infra.dao.UserMapper">
+    <sql id="whereUserNameLike">
+        <where>
+            <if test='username != null and username != ""'>
+                username like concat('%',#{username},'%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="pageQuery" resultType="io.github.sztuwebclub.webvoyager.domain.user.User">
+        SELECT id,username,entry_year,userid,nickname,create_time,sso_id,major,role
+        FROM user
+        <include refid="whereUserNameLike"></include>
+        ORDER BY id asc
+        <if test="start != null and pagesize != null">
+            LIMIT #{start},#{pagesize}
+        </if>
+    </select>
+
+    <select id="userCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM user
+        <include refid="whereUserNameLike"></include>
+    </select>
 </mapper>

@@ -1,6 +1,8 @@
 package io.github.sztuwebclub.webvoyager.domain.Service.impl;
 
+import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import io.github.sztuwebclub.webvoyager.domain.Service.UserService;
+import io.github.sztuwebclub.webvoyager.domain.problem.Problem;
 import io.github.sztuwebclub.webvoyager.domain.user.IUserRepo;
 import io.github.sztuwebclub.webvoyager.domain.user.User;
 import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
@@ -20,8 +22,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> list() {
-        return User.list(userRepo);
+    public PageResult<User> pageQuery(Integer page, Integer pagesize, String username) {
+        return User.pageQuery(page,pagesize,username,userRepo);
+    }
+
+    @Override
+    public User getUserById(Integer id) {
+        return User.getUserById(id,userRepo);
     }
 
 }

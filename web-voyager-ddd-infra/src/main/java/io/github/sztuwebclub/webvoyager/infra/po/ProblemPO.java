@@ -20,7 +20,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @TableName(value ="problem")
 public class ProblemPO implements Serializable {
-
     /**
     * 题目id
     */
