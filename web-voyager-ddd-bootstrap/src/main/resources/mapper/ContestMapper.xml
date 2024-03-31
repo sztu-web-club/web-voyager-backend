@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.sztuwebclub.webvoyager.infra.dao.ContestMapper">
+    <sql id="whereNameLike">
+        <if test='name != null and name != ""'>
+            username like concat('%',#{name},'%')
+        </if>
+    </sql>
+
+    <select id="pageQuery" resultType="io.github.sztuwebclub.webvoyager.domain.contest.Contest">
+        SELECT id, name, start_time, end_time, desp, isprivate
+        FROM contest
+        <where>
+            <include refid="whereNameLike"></include>
+        </where>
+        ORDER BY id asc
+        <if test="start != null and pagesize != null">
+            LIMIT #{start},#{pagesize}
+        </if>
+    </select>
+
+    <select id="contestCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM contest
+        <where>
+            <include refid="whereNameLike"></include>
+        </where>
+    </select>
+
+</mapper>

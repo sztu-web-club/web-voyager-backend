@@ -5,7 +5,7 @@ import io.github.sztuwebclub.webvoyager.application.http.assembler.ProblemAssemb
 import io.github.sztuwebclub.webvoyager.constant.ResponseCode;
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import io.github.sztuwebclub.webvoyager.constant.model.Response;
-import io.github.sztuwebclub.webvoyager.domain.Service.ProblemService;
+import io.github.sztuwebclub.webvoyager.domain.service.IProblemService;
 import io.github.sztuwebclub.webvoyager.domain.problem.Problem;
 import io.github.sztuwebclub.webvoyager.domain.problem.ProblemDetails;
 import jakarta.annotation.Resource;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProblemController {
 
     @Resource
-    private ProblemService problemService;
+    private IProblemService problemService;
 
     @GetMapping("/problem/page")
     public Response<PageResult<Problem>> list(@RequestParam("page")Integer page,@RequestParam("pagesize")Integer pagesize,@RequestParam("title")String title){

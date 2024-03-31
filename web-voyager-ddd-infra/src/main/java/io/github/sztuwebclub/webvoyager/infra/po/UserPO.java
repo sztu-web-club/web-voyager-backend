@@ -47,7 +47,7 @@ public class UserPO implements Serializable {
     */
     @NotBlank(message="[邮箱]不能为空")
     @Size(max= 50,message="编码长度不能超过50")
-    private String userid;
+    private String email;
     /**
     * 密码
     */

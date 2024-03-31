@@ -15,8 +15,8 @@ public interface UserMapper extends BaseMapper<UserPO> {
 
     List<User> pageQuery(@Param("start") Integer start, @Param("pagesize") Integer pagesize, @Param("username") String username);
 
-    @Select("select id,username,entry_year,userid,nickname,create_time,sso_id,major,role from user where id = #{id}")
-    User getUserById(@Param("id") Integer id);
+    @Select("select id,username,entry_year,email,nickname,create_time,sso_id,major,role from user where id = #{id}")
+    User getUserById(@Param("id") Long id);
 
     @Select("select id,username,password from user where username = #{username}")
     UserAuth getUserAuthByUsername(@Param("username") String username);

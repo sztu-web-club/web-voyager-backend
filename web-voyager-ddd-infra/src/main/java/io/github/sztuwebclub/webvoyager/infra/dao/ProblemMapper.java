@@ -13,5 +13,5 @@ public interface ProblemMapper extends BaseMapper<ProblemPO> {
     List<Problem> pageQuery(@Param("start") Integer start, @Param("pagesize") Integer pagesize, @Param("title") String title);
 
     @Select("select id, title, time_limit, memory_limit, total_solved, total_submit, author_id, author_name from problem where id = #{id}")
-    Problem getProblemById(@Param("id") Integer id);
+    Problem getProblemById(@Param("id") Long id);
 }

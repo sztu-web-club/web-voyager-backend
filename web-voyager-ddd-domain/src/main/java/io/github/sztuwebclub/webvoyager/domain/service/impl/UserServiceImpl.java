@@ -1,18 +1,15 @@
-package io.github.sztuwebclub.webvoyager.domain.Service.impl;
+package io.github.sztuwebclub.webvoyager.domain.service.impl;
 
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
-import io.github.sztuwebclub.webvoyager.domain.Service.UserService;
-import io.github.sztuwebclub.webvoyager.domain.problem.Problem;
+import io.github.sztuwebclub.webvoyager.domain.service.IUserService;
 import io.github.sztuwebclub.webvoyager.domain.user.IUserRepo;
 import io.github.sztuwebclub.webvoyager.domain.user.User;
 import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements IUserService {
     @Resource
     private IUserRepo userRepo;
 
@@ -23,12 +20,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageResult<User> pageQuery(Integer page, Integer pagesize, String username) {
-        return User.pageQuery(page,pagesize,username,userRepo);
+        User user = User.builder()
+                .username(username)
+                .build();
+        return user.pageQuery(page,pagesize,userRepo);
     }
 
     @Override
     public User getUserById(Integer id) {
-        return User.getUserById(id,userRepo);
+        User user = User.builder()
+                .id(Long.valueOf(id))
+                .build();
+        return user.getUserById(userRepo);
     }
 
 }

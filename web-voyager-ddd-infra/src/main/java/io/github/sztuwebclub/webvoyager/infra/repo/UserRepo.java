@@ -26,7 +26,7 @@ public class UserRepo implements IUserRepo {
     }
 
     @Override
-    public User getUserById(Integer id) {
+    public User getUserById(Long id) {
         return userDao.getUserById(id);
     }
 

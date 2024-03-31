@@ -7,7 +7,7 @@ public interface IUserRepo {
 
     List<User> pageQuery(Integer start, Integer pagesize, String title);
 
-    User getUserById(Integer id);
+    User getUserById(Long id);
 
     UserAuth getUserAuthByUsername(String username);
 

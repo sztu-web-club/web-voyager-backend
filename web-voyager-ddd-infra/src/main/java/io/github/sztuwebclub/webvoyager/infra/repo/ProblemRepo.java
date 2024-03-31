@@ -28,12 +28,12 @@ public class ProblemRepo implements IProblemRepo {
     }
 
     @Override
-    public Problem getProblemById(Integer id) {
+    public Problem getProblemById(Long id) {
         return problemDao.getProblemById(id);
     }
 
     @Override
-    public ProblemDetails getProblemDeatilsById(Integer id) {
+    public ProblemDetails getProblemDeatilsById(Long id) {
         return problemDatailsDao.getProblemDeatilsById(id);
     }
 }

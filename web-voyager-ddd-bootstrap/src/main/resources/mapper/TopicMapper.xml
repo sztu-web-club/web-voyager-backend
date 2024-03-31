@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.sztuwebclub.webvoyager.infra.dao.TopicMapper">
+    <sql id="whereProblemId">
+        <if test='problemId != null and problemId != ""'>
+            problem_id = #{problemId}
+        </if>
+    </sql>
+
+    <sql id="whereContestId">
+        <if test='contestId != 0'>
+            AND contest_id = #{contestId}
+        </if>
+    </sql>
+
+    <sql id="whereReply">
+        <choose>
+            <when test='reply > 0'>
+                AND reply = #{reply}
+            </when>
+            <otherwise>
+                AND reply &lt;= #{reply}
+            </otherwise>
+        </choose>
+    </sql>
+    
+    <sql id="orderReply">
+        ORDER BY
+        <choose>
+            <when test='reply > 0'>
+                in_date asc
+            </when>
+            <otherwise>
+                reply asc
+            </otherwise>
+        </choose>
+    </sql>
+
+    <select id="pageQuery" resultType="io.github.sztuwebclub.webvoyager.domain.topic.Topic">
+        SELECT topic_id,user_id,content,reply,public_show,contest_id,in_date,problem_id
+        FROM topic
+        <where>
+            <include refid="whereProblemId"></include>
+            <include refid="whereContestId"></include>
+            <include refid="whereReply"></include>
+        </where>
+        <include refid="orderReply"></include>
+        <if test="start != null and pagesize != null">
+            LIMIT #{start},#{pagesize}
+        </if>
+    </select>
+
+    <select id="topicCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM topic
+        <where>
+            <include refid="whereProblemId"></include>
+            <include refid="whereContestId"></include>
+            <include refid="whereReply"></include>
+        </where>
+    </select>
+</mapper>

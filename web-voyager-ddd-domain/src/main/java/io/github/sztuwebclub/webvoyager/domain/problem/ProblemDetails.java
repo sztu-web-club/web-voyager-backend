@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Builder
 public class ProblemDetails extends AuditableEntity {
-    private Integer id;
+    private Long id;
     private String description;
     private String hintInput;
     private String hintOutput;
@@ -18,4 +18,8 @@ public class ProblemDetails extends AuditableEntity {
     private String hint;
     private String input;
     private String output;
+
+    public ProblemDetails getProblemDeatilsById(IProblemRepo problemRepo) {
+        return problemRepo.getProblemDeatilsById(id);
+    }
 }

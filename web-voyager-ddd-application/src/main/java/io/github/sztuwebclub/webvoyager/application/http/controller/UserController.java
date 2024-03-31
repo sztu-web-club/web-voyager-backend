@@ -1,30 +1,23 @@
 package io.github.sztuwebclub.webvoyager.application.http.controller;
 
 import io.github.sztuwebclub.webvoyager.api.user.request.UserLoginRequest;
-import io.github.sztuwebclub.webvoyager.api.user.response.ProblemInfoResp;
-import io.github.sztuwebclub.webvoyager.api.user.response.UserListResp;
 import io.github.sztuwebclub.webvoyager.api.user.response.UserLoginResp;
-import io.github.sztuwebclub.webvoyager.application.http.assembler.ProblemAssembler;
 import io.github.sztuwebclub.webvoyager.application.http.assembler.UserAssembler;
 import io.github.sztuwebclub.webvoyager.constant.ResponseCode;
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import io.github.sztuwebclub.webvoyager.constant.model.Response;
-import io.github.sztuwebclub.webvoyager.domain.Service.UserService;
-import io.github.sztuwebclub.webvoyager.domain.problem.Problem;
-import io.github.sztuwebclub.webvoyager.domain.problem.ProblemDetails;
+import io.github.sztuwebclub.webvoyager.domain.service.IUserService;
 import io.github.sztuwebclub.webvoyager.domain.user.User;
 import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Slf4j
 @RestController
 public class UserController {
     @Resource
-    private UserService userService;
+    private IUserService userService;
 
     @RequestMapping("/success")
     public Response<String> success() {

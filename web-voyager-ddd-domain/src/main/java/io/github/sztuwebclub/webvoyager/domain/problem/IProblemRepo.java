@@ -7,7 +7,7 @@ public interface IProblemRepo {
 
     List<Problem> pageQuery(Integer page, Integer pagesize, String title);
 
-    Problem getProblemById(Integer id);
+    Problem getProblemById(Long id);
 
-    ProblemDetails getProblemDeatilsById(Integer id);
+    ProblemDetails getProblemDeatilsById(Long id);
 }

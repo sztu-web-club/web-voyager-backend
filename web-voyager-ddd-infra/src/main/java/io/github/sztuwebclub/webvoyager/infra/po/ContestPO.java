@@ -28,7 +28,7 @@ public class ContestPO {
      */
     @NotBlank(message="[比赛名称]不能为空")
     @Size(max= 200,message="编码长度不能超过200")
-    private String username;
+    private String name;
     /**
      * 比赛开始时间
      */
