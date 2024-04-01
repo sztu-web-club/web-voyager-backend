@@ -6,7 +6,6 @@ import io.github.sztuwebclub.webvoyager.constant.ResponseCode;
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import io.github.sztuwebclub.webvoyager.constant.model.Response;
 import io.github.sztuwebclub.webvoyager.domain.service.ITopicService;
-import io.github.sztuwebclub.webvoyager.domain.topic.Topic;
 import io.github.sztuwebclub.webvoyager.domain.topic.TopicUser;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;

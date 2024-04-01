@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Getter
 public enum MessageEnum {
 
-    PASSWORD_ERROR("密码错误"),
-    ACCOUNT_NOT_FOUND("账号不存在"),
+    // 合并错误消息防止穷举用户名
+    ACCOUNT_NOT_FOUND_OR_PASSWORD_ERROR("账号不存在或密码错误"),
     ACCOUNT_LOCKED("账号被锁定"),
     UNKNOWN_ERROR("未知错误"),
     ALREADY_EXISTS("已存在"),

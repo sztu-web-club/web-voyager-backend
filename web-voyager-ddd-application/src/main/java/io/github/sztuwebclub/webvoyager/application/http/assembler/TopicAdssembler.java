@@ -2,15 +2,13 @@ package io.github.sztuwebclub.webvoyager.application.http.assembler;
 
 import io.github.sztuwebclub.webvoyager.api.user.response.TopicPage;
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
-import io.github.sztuwebclub.webvoyager.domain.topic.ITopicUserRepo;
-import io.github.sztuwebclub.webvoyager.domain.topic.Topic;
 import io.github.sztuwebclub.webvoyager.domain.topic.TopicUser;
-import io.github.sztuwebclub.webvoyager.domain.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TopicAdssembler {
+    private TopicAdssembler() {}
 
     private static TopicPage topicUserToTopicPage(TopicUser topicUser){
         return TopicPage.builder()

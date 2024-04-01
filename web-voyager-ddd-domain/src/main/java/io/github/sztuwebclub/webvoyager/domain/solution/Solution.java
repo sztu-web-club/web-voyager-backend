@@ -2,8 +2,6 @@ package io.github.sztuwebclub.webvoyager.domain.solution;
 
 import io.github.sztuwebclub.webvoyager.constant.AuditableEntity;
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
-import io.github.sztuwebclub.webvoyager.domain.topic.Topic;
-import io.github.sztuwebclub.webvoyager.domain.user.User;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

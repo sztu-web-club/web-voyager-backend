@@ -2,7 +2,6 @@ package io.github.sztuwebclub.webvoyager.domain.problem;
 
 import io.github.sztuwebclub.webvoyager.constant.AuditableEntity;
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
-import jakarta.annotation.Resource;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -3,7 +3,6 @@ package io.github.sztuwebclub.webvoyager.domain.service.impl;
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import io.github.sztuwebclub.webvoyager.domain.service.ITopicService;
 import io.github.sztuwebclub.webvoyager.domain.topic.ITopicUserRepo;
-import io.github.sztuwebclub.webvoyager.domain.topic.Topic;
 import io.github.sztuwebclub.webvoyager.domain.topic.TopicUser;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;

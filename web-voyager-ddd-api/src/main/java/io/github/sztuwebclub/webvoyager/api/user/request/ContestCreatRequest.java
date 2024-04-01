@@ -1,6 +1,5 @@
 package io.github.sztuwebclub.webvoyager.api.user.request;
 
-import io.github.sztuwebclub.webvoyager.domain.contest.ContestProblem;
 import lombok.Data;
 
 import java.util.Date;
