@@ -6,10 +6,10 @@ import io.github.sztuwebclub.webvoyager.constant.enumerate.JwtClaimsEnum;
 import io.github.sztuwebclub.webvoyager.constant.MessageEnum;
 import io.github.sztuwebclub.webvoyager.constant.model.BaseException;
 import io.github.sztuwebclub.webvoyager.constant.utils.JwtUtil;
+import io.github.sztuwebclub.webvoyager.constant.utils.PasswordUtil;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.util.DigestUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,20 +20,20 @@ import java.util.Map;
 public class UserAuth extends AuditableEntity {
     private Long id;
     private String username;
+    // 前端传入SHA1，使用BCryptPasswordEncoder加密
     private String password;
 
     public String login(IUserRepo userRepo) {
         UserAuth userAuth = userRepo.getUserAuthByUsername(username);
 
         if (userAuth == null) {
-            throw new BaseException(MessageEnum.ACCOUNT_NOT_FOUND.toString());
+            throw new BaseException(MessageEnum.ACCOUNT_NOT_FOUND_OR_PASSWORD_ERROR.toString());
         }
 
-        // TODO md5改sha1
-        password = DigestUtils.md5DigestAsHex(password.getBytes());
-        if (!password.equals(userAuth.getPassword())) {
-            //密码错误
-            throw new BaseException(MessageEnum.PASSWORD_ERROR.toString());
+        var epassword = PasswordUtil.encrypt(password);
+
+        if (!epassword.equals(userAuth.getPassword())) {
+            throw new BaseException(MessageEnum.ACCOUNT_NOT_FOUND_OR_PASSWORD_ERROR.toString());
         }
 
 //        暂未设计账户冻结状态
@@ -43,8 +43,6 @@ public class UserAuth extends AuditableEntity {
 
         Map<String, Object> claims = new HashMap<>();
         claims.put(JwtClaimsEnum.USER_ID.toString(), userAuth.getId());
-        String token = JwtUtil.createJWT(JwtProperties.USER.getTtl(), claims);
-
-        return token;
+        return JwtUtil.createJWT(JwtProperties.USER.getTtl(), claims);
     }
 }
