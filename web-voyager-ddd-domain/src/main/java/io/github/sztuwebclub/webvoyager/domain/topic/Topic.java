@@ -23,7 +23,7 @@ public class Topic extends AuditableEntity implements Serializable {
     private Date indate;
     private Integer problemid;
 
-    public PageResult<Topic> pageQuery(Integer page, Integer pagesize, ITopicRepo topicRepo) {
+    public PageResult<Topic> pageQuery(Integer page, Integer pagesize, ITopicUserRepo topicRepo) {
         Integer total = topicRepo.topicCount(problemid,contestid,reply);
         Integer start = (page - 1)*pagesize;
         List<Topic> resultList = topicRepo.pageQuery(start, pagesize, problemid,contestid,reply);

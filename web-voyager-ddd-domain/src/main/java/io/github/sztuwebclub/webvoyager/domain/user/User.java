@@ -2,6 +2,7 @@ package io.github.sztuwebclub.webvoyager.domain.user;
 
 import io.github.sztuwebclub.webvoyager.constant.AuditableEntity;
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
+import io.github.sztuwebclub.webvoyager.domain.topic.ITopicUserRepo;
 import lombok.*;
 
 import java.io.Serializable;
@@ -31,6 +32,10 @@ public class User extends AuditableEntity implements Serializable {
 
     public User getUserById(IUserRepo userRepo) {
         return userRepo.getUserById(id);
+    }
+
+    public User getUserById(ITopicUserRepo topicUserRepo) {
+        return topicUserRepo.getUserById(id);
     }
 
 }
