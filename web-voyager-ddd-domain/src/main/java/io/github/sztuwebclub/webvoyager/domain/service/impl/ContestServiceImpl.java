@@ -19,7 +19,11 @@ public class ContestServiceImpl implements IContestService {
 
     @Override
     @Transactional
-    public void creatContest(String name, Date starttime, Date endtime, String desp, List<ContestProblem> contestProblemList) {
+    public void creatContest(String name,
+                             Date starttime,
+                             Date endtime,
+                             String desp,
+                             List<ContestProblem> contestProblemList) {
         Contest contest = Contest.builder()
                 .name(name)
                 .starttime(starttime)
@@ -37,7 +41,9 @@ public class ContestServiceImpl implements IContestService {
     }
 
     @Override
-    public PageResult<Contest> pageQuery(Integer page, Integer pagesize, String name) {
+    public PageResult<Contest> pageQuery(Integer page,
+                                         Integer pagesize,
+                                         String name) {
         Contest contest = Contest.builder()
                 .name(name)
                 .build();

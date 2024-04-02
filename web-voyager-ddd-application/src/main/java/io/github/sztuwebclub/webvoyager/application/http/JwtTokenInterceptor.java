@@ -29,7 +29,7 @@ public class JwtTokenInterceptor implements HandlerInterceptor {
             log.info("jwt校验:{}", token);
             Claims claims = JwtUtil.parseJWT(token);
             Integer userId = Integer.valueOf(claims.get(JwtClaimsEnum.USER_ID.name()).toString());
-            log.info("当前员工id: ", userId);
+            log.info("当前员工id:{}", userId);
             ContextUtil.setCurrentId(userId);
             return true;
         } catch (Exception ex) {

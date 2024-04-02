@@ -25,7 +25,7 @@ public class User extends AuditableEntity implements Serializable {
 
     public PageResult<User> pageQuery(Integer page, Integer pagesize, IUserRepo userRepo) {
         Integer total = userRepo.userCount(username);
-        Integer start = (page - 1)*pagesize;
+        int start = (page - 1)*pagesize;
         List<User> resultList = userRepo.pageQuery(start, pagesize, username);
         return new PageResult<>(total, start + 1, pagesize, resultList);
     }

@@ -24,7 +24,7 @@ public class Problem extends AuditableEntity implements Serializable {
 
     public PageResult<Problem> pageQuery(Integer page, Integer pagesize, IProblemRepo problemRepo) {
         Integer total = problemRepo.problemCount(title);
-        Integer start = (page - 1)*pagesize;
+        int start = (page - 1)*pagesize;
         List<Problem> resultList = problemRepo.pageQuery(start, pagesize, title);
         return new PageResult<>(total, start + 1, pagesize, resultList);
     }

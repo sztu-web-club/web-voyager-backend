@@ -28,7 +28,7 @@ public class Solution extends AuditableEntity implements Serializable {
 
     public PageResult<Solution> pageQuery(Integer page, Integer pagesize, ISolutionRepo solutionRepo) {
         Integer total = solutionRepo.solutionCount(problemid,contestid,userid);
-        Integer start = (page - 1)*pagesize;
+        int start = (page - 1)*pagesize;
         List<Solution> resultList = solutionRepo.pageQuery(start, pagesize, problemid,contestid,userid);
         return new PageResult<>(total, start + 1, pagesize, resultList);
     }

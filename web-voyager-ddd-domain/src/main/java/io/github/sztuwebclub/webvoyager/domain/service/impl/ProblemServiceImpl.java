@@ -14,7 +14,9 @@ public class ProblemServiceImpl implements IProblemService {
     private IProblemRepo problemRepo;
 
     @Override
-    public PageResult<Problem> pageQuery(Integer page, Integer pagesize, String title) {
+    public PageResult<Problem> pageQuery(Integer page,
+                                         Integer pagesize,
+                                         String title) {
         Problem problem = Problem.builder()
                 .title(title)
                 .build();

@@ -26,7 +26,7 @@ public class Contest extends AuditableEntity implements Serializable {
     }
     public PageResult<Contest> pageQuery(Integer page, Integer pagesize, IContestRepo contestRepo) {
         Integer total = contestRepo.contestCount(name);
-        Integer start = (page - 1)*pagesize;
+        int start = (page - 1)*pagesize;
         List<Contest> resultList = contestRepo.pageQuery(start, pagesize, name);
         return new PageResult<>(total, start + 1, pagesize, resultList);
     }

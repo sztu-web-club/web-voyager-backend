@@ -30,7 +30,9 @@ public class UserController {
     }
 
     @GetMapping("/user/page")
-    public Response<PageResult<User>> list(@RequestParam("page")Integer page,@RequestParam("pagesize")Integer pagesize,@RequestParam("username")String username){
+    public Response<PageResult<User>> list(@RequestParam("page")Integer page,
+                                           @RequestParam("pagesize")Integer pagesize,
+                                           @RequestParam("username")String username){
         log.info("用户列表获取");
         PageResult<User> pageResult = userService.pageQuery(page,pagesize,username);
         return Response.<PageResult<User>>builder()

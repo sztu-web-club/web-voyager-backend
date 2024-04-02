@@ -40,4 +40,7 @@ public class PageResult<T extends Serializable> implements Serializable {
         this.hasPrev = this.start > this.size;
         this.hasNext = this.start + this.size < this.total;
     }
+
+
+
 }

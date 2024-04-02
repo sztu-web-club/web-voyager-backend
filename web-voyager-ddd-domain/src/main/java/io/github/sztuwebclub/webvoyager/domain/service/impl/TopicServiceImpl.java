@@ -13,7 +13,11 @@ public class TopicServiceImpl implements ITopicService {
     private ITopicUserRepo topicUserRepo;
 
     @Override
-    public PageResult<TopicUser> pageQuery(Integer page, Integer pagesize, Integer problemId, Integer contestId, Integer reply) {
+    public PageResult<TopicUser> pageQuery(Integer page,
+                                           Integer pagesize,
+                                           Integer problemId,
+                                           Integer contestId,
+                                           Integer reply) {
         TopicUser topicUser = TopicUser.builder()
                 .problemid(problemId)
                 .contestid(contestId)

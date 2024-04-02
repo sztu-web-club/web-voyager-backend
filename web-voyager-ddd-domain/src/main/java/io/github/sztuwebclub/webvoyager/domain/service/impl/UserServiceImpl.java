@@ -19,7 +19,9 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public PageResult<User> pageQuery(Integer page, Integer pagesize, String username) {
+    public PageResult<User> pageQuery(Integer page,
+                                      Integer pagesize,
+                                      String username) {
         User user = User.builder()
                 .username(username)
                 .build();

@@ -20,7 +20,9 @@ public class ProblemController {
     private IProblemService problemService;
 
     @GetMapping("/problem/page")
-    public Response<PageResult<Problem>> list(@RequestParam("page")Integer page,@RequestParam("pagesize")Integer pagesize,@RequestParam("title")String title){
+    public Response<PageResult<Problem>> list(@RequestParam("page")Integer page,
+                                              @RequestParam("pagesize")Integer pagesize,
+                                              @RequestParam("title")String title){
         log.info("问题列表获取");
         PageResult<Problem> pageResult = problemService.pageQuery(page,pagesize,title);
         return Response.<PageResult<Problem>>builder()
