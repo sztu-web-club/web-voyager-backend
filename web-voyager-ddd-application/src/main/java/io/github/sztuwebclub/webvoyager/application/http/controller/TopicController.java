@@ -20,7 +20,7 @@ public class TopicController {
     private ITopicService topicService;
 
     @GetMapping("/topic/page")
-    public Response<PageResult<TopicPage>> list(@RequestParam("page")Integer page,
+    public Response<PageResult<TopicPage>> page(@RequestParam("page")Integer page,
                                                 @RequestParam("pagesize")Integer pagesize,
                                                 @RequestParam("problemId")Integer problemId,
                                                 @RequestParam("contestId")Integer contestId,

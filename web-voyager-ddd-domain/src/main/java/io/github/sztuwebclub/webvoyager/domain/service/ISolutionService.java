@@ -17,10 +17,13 @@ public interface ISolutionService {
                                    Integer contestId,
                                    Integer userId);
 
-    SseEmitter streamSolutionsWithSSE(Integer page,
+    SseEmitter streamSolutionPageWithSSE(Integer page,
                                       Integer pageSize,
                                       Integer problemId,
                                       Integer contestId,
                                       Integer userId);
 
+    Solution getSolutionById(Integer id);
+
+    SseEmitter streamSolutionWithSSE(Integer id);
 }

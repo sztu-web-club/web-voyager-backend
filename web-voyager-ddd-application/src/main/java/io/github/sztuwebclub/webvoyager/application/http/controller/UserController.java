@@ -22,7 +22,7 @@ public class UserController {
     private IUserService userService;
 
     @GetMapping("/user/page")
-    public Response<PageResult<User>> list(@RequestParam("page")Integer page,
+    public Response<PageResult<User>> page(@RequestParam("page")Integer page,
                                            @RequestParam("pagesize")Integer pagesize,
                                            @RequestParam("username")String username){
         log.info("用户列表获取");

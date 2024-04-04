@@ -39,7 +39,7 @@ public class ContestController {
     }
 
     @GetMapping("/contest/page")
-    public Response<PageResult<Contest>> list(@RequestParam("page")Integer page,
+    public Response<PageResult<Contest>> page(@RequestParam("page")Integer page,
                                               @RequestParam("pagesize")Integer pagesize,
                                               @RequestParam("name")String name){
         log.info("比赛列表获取");

@@ -57,4 +57,9 @@ public class SolutionRepo implements ISolutionRepo {
 
         solutionDao.updateById(solutionPO);
     }
+
+    @Override
+    public Solution getUserById(Long id) {
+        return solutionDao.getSolutionById(id);
+    }
 }

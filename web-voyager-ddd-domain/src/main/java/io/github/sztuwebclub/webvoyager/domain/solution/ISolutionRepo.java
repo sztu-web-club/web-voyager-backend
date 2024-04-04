@@ -10,4 +10,6 @@ public interface ISolutionRepo {
     Long submitUnJudgedSolution(Integer problemid, Integer userid, Integer contestid, String language, String code);
 
     void upDataJudgedMessageById(Long id, Integer time, Integer memory, Integer result, Integer passedtest, Integer totaltest, Integer judgerid);
+
+    Solution getUserById(Long id);
 }

@@ -41,4 +41,8 @@ public class Solution extends AuditableEntity implements Serializable {
         //判题结果更新
         solutionRepo.upDataJudgedMessageById(id,time,memory,result,passedtest,totaltest,judgerid);
     }
+
+    public Solution getSolutionById(ISolutionRepo solutionRepo) {
+        return solutionRepo.getUserById(id);
+    }
 }
