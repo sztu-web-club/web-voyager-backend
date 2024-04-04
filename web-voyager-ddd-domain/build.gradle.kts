@@ -11,5 +11,6 @@ dependencies {
     implementation(libs.mybatis.plus)
     implementation(libs.jakarta)
     implementation(libs.lombok)
+    implementation((libs.springboot.data.redis))
     annotationProcessor(libs.lombok)
 }

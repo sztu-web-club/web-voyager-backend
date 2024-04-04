@@ -6,10 +6,12 @@ import io.github.sztuwebclub.webvoyager.application.http.assembler.UserAssembler
 import io.github.sztuwebclub.webvoyager.constant.ResponseCode;
 import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import io.github.sztuwebclub.webvoyager.constant.model.Response;
+import io.github.sztuwebclub.webvoyager.constant.utils.ContextUtil;
 import io.github.sztuwebclub.webvoyager.domain.service.IUserService;
 import io.github.sztuwebclub.webvoyager.domain.user.User;
 import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,16 +20,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Resource
     private IUserService userService;
-
-    @RequestMapping("/success")
-    public Response<String> success() {
-        log.info("测试调用");
-        return Response.<String>builder()
-                .code(ResponseCode.SUCCESS.getCode())
-                .info(ResponseCode.SUCCESS.getInfo())
-                .data("查询用户信息")
-                .build();
-    }
 
     @GetMapping("/user/page")
     public Response<PageResult<User>> list(@RequestParam("page")Integer page,
@@ -64,6 +56,18 @@ public class UserController {
                 .code(ResponseCode.SUCCESS.getCode())
                 .info(ResponseCode.SUCCESS.getInfo())
                 .data(userLoginResp)
+                .build();
+    }
+
+    @GetMapping("/user/logout")
+    public Response<String> logout(HttpServletRequest request){
+        log.info("用户登出:{}", ContextUtil.getCurrentId());
+        String token = request.getHeader("Authorization");
+        userService.logout(ContextUtil.getCurrentId(),token);
+        return Response.<String>builder()
+                .code(ResponseCode.SUCCESS.getCode())
+                .info(ResponseCode.SUCCESS.getInfo())
+                .data("用户登出")
                 .build();
     }
 }

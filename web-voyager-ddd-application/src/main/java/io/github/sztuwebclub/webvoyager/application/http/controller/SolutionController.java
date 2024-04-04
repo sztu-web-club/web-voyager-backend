@@ -21,13 +21,14 @@ public class SolutionController {
     private ISolutionService solutionService;
 
     @PostMapping("/solution/submit/{id}")
-    public Response<String> submit(@PathVariable("id") Integer id,
+    public Response<String> submit(@PathVariable("id") Integer problemId,
                                    @RequestBody SolutionSubmitRequest solutionSubmitRequest){
         log.info("提交题解");
-        Solution solution = SolutionAssembler.solutionSubmitRequestToSolution(solutionSubmitRequest);
-        solution.setProblemid(id);
-        solution.setUserid(ContextUtil.getCurrentId());
-        solutionService.submit(solution);
+        solutionService.submit(problemId,
+                ContextUtil.getCurrentId(),
+                solutionSubmitRequest.getConstestid(),
+                solutionSubmitRequest.getLang(),
+                solutionSubmitRequest.getCode());
         return Response.<String>builder()
                 .code(ResponseCode.SUCCESS.getCode())
                 .info(ResponseCode.SUCCESS.getInfo())

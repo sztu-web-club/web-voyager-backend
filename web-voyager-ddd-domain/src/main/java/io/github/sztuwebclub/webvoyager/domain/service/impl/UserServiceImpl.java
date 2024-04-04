@@ -6,12 +6,18 @@ import io.github.sztuwebclub.webvoyager.domain.user.IUserRepo;
 import io.github.sztuwebclub.webvoyager.domain.user.User;
 import io.github.sztuwebclub.webvoyager.domain.user.UserAuth;
 import jakarta.annotation.Resource;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements IUserService {
     @Resource
     private IUserRepo userRepo;
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     @Override
     public String login(UserAuth userAuth) {
@@ -34,6 +40,11 @@ public class UserServiceImpl implements IUserService {
                 .id(Long.valueOf(id))
                 .build();
         return user.getUserById(userRepo);
+    }
+
+    @Override
+    public void logout(Integer userId, String token) {
+        stringRedisTemplate.opsForValue().set(String.valueOf(userId),token,2, TimeUnit.HOURS);
     }
 
 }

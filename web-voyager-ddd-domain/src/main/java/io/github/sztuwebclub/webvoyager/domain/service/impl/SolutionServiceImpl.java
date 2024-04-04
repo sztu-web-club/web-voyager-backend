@@ -21,8 +21,15 @@ public class SolutionServiceImpl implements ISolutionService {
 
     private ConcurrentHashMap<SseEmitter, ScheduledExecutorService> emitterSchedulers = new ConcurrentHashMap<>();
     @Override
-    public void submit(Solution solution) {
-        solution.submit();
+    public void submit(Integer problemId, Integer userId, Integer contestId, String language, String code) {
+        Solution solution = Solution.builder()
+                .problemid(problemId)
+                .userid(userId)
+                .contestid(contestId)
+                .language(language)
+                .code(code)
+                .build();
+        solution.submit(solutionRepo);
     }
 
     @Override
@@ -50,11 +57,13 @@ public class SolutionServiceImpl implements ISolutionService {
         scheduler.scheduleAtFixedRate(() -> {
             try {
                 PageResult<Solution> pageResult = pageQuery(page, pageSize, problemId, contestId, userId);
-                emitter.send(pageResult, MediaType.APPLICATION_JSON);
 
                 boolean allSuccess = pageResult.getList().stream().allMatch(solution -> solution.getResult() == 0 || solution.getResult() == 1);
-                if (allSuccess) {
+                if (!allSuccess) {
+                    emitter.send(pageResult, MediaType.APPLICATION_JSON);
+                } else {
                     emitter.send("All results are success", MediaType.TEXT_PLAIN);
+                    emitter.send(pageResult, MediaType.APPLICATION_JSON);
                     emitter.complete();
                 }
             } catch (Exception e) {

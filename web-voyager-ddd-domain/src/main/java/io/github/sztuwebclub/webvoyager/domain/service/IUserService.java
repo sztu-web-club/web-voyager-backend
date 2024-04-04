@@ -10,4 +10,6 @@ public interface IUserService {
     PageResult<User> pageQuery(Integer page, Integer pagesize, String title);
 
     User getUserById(Integer id);
+
+    void logout(Integer userId, String token);
 }

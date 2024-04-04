@@ -5,6 +5,7 @@ import io.github.sztuwebclub.webvoyager.constant.model.PageResult;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 import java.util.List;
@@ -33,7 +34,11 @@ public class Solution extends AuditableEntity implements Serializable {
         return new PageResult<>(total, start + 1, pagesize, resultList);
     }
 
-    public void submit() {
-        //TODO 调用沙箱判题和保存
+    public void submit(ISolutionRepo solutionRepo) {
+        //未判题预存储
+        id = solutionRepo.submitUnJudgedSolution(problemid,userid,contestid,language,code);
+        //TODO 调用沙箱判题(将判题结果相关成员变量保存到实例对象中)
+        //判题结果更新
+        solutionRepo.upDataJudgedMessageById(id,time,memory,result,passedtest,totaltest,judgerid);
     }
 }

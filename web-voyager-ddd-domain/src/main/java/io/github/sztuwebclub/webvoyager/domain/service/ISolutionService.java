@@ -5,7 +5,11 @@ import io.github.sztuwebclub.webvoyager.domain.solution.Solution;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 public interface ISolutionService {
-    void submit(Solution solution);
+    void submit(Integer problemId,
+                Integer userId,
+                Integer contestId,
+                String language,
+                String code);
 
     PageResult<Solution> pageQuery(Integer page,
                                    Integer pagesize,
