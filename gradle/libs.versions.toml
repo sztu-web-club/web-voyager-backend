@@ -33,6 +33,9 @@ lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" 
 log4j-core = { group = "org.apache.logging.log4j", name = "log4j-core", version.ref = "log4j" }
 log4j-slf4j2 = { group = "org.apache.logging.log4j", name = "log4j-slf4j2-impl", version.ref = "log4j" }
 
+# websocket
+springboot-websocket = { group = "org.springframework.boot", name = "spring-boot-starter-websocket", version.ref = "springboot" }
+
 [plugins]
 springboot = { id = "org.springframework.boot", version.ref = "springboot" }
 spring-dependency = { id = "io.spring.dependency-management", version.ref = "springbootdependency" }
