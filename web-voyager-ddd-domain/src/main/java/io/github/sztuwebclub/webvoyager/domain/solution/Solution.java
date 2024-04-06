@@ -6,9 +6,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
+import org.springframework.http.MediaType;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -44,5 +51,66 @@ public class Solution extends AuditableEntity implements Serializable {
 
     public Solution getSolutionById(ISolutionRepo solutionRepo) {
         return solutionRepo.getUserById(id);
+    }
+
+    public SseEmitter streamSolutionWithSSE(ConcurrentMap<SseEmitter, ScheduledExecutorService> emitterSchedulers, ISolutionRepo solutionRepo) {
+        SseEmitter emitter = new SseEmitter();
+
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        emitterSchedulers.put(emitter, scheduler);
+
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                Solution solution = getSolutionById(solutionRepo);
+                boolean success = solution.getResult()==0||solution.getResult()==1;
+                if (!success) {
+                    emitter.send(solution, MediaType.APPLICATION_JSON);
+                } else {
+                    emitter.send("All results are success", MediaType.TEXT_PLAIN);
+                    emitter.send(solution, MediaType.APPLICATION_JSON);
+                    emitter.complete();
+                }
+            } catch (Exception e) {
+                emitter.completeWithError(e);
+            }
+        }, 0, 1, TimeUnit.SECONDS);
+
+        emitter.onCompletion(() -> {
+            ScheduledExecutorService scheduledExecutorService = emitterSchedulers.remove(emitter);
+            scheduledExecutorService.shutdown();
+        });
+
+        return emitter;
+    }
+
+    public SseEmitter streamSolutionPageWithSSE(Integer page, Integer pageSize, ConcurrentMap<SseEmitter, ScheduledExecutorService> emitterSchedulers, ISolutionRepo solutionRepo) {
+        SseEmitter emitter = new SseEmitter();
+
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        emitterSchedulers.put(emitter, scheduler);
+
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                PageResult<Solution> pageResult = pageQuery(page, pageSize,solutionRepo);
+
+                boolean allSuccess = pageResult.getList().stream().allMatch(solution -> solution.getResult() == 0 || solution.getResult() == 1);
+                if (!allSuccess) {
+                    emitter.send(pageResult, MediaType.APPLICATION_JSON);
+                } else {
+                    emitter.send("All results are success", MediaType.TEXT_PLAIN);
+                    emitter.send(pageResult, MediaType.APPLICATION_JSON);
+                    emitter.complete();
+                }
+            } catch (Exception e) {
+                emitter.completeWithError(e);
+            }
+        }, 0, 1, TimeUnit.SECONDS);
+
+        emitter.onCompletion(() -> {
+            ScheduledExecutorService scheduledExecutorService = emitterSchedulers.remove(emitter);
+            scheduledExecutorService.shutdown();
+        });
+
+        return emitter;
     }
 }

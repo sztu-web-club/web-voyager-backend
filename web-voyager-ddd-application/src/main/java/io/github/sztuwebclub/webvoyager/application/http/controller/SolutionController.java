@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 @Slf4j
 @RestController
 public class SolutionController {
-
     @Resource
     private ISolutionService solutionService;
 
@@ -34,6 +33,7 @@ public class SolutionController {
                 .info(ResponseCode.SUCCESS.getInfo())
                 .data("提交题解")
                 .build();
+
     }
 
     @GetMapping("/solution/page")
