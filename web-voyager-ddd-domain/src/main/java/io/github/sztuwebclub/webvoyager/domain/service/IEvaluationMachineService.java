@@ -9,7 +9,7 @@ import io.github.sztuwebclub.webvoyager.domain.evaluationMachine.JudgeResult;
 
 import java.util.List;
 
-public interface EvaluationMachineService {
+public interface IEvaluationMachineService {
     /**
      * 注册评测机。
      * @param machine 要注册的评测机对象

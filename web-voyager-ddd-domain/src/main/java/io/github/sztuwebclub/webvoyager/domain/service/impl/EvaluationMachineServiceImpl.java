@@ -3,7 +3,7 @@ package io.github.sztuwebclub.webvoyager.domain.service.impl;
 import io.github.sztuwebclub.webvoyager.domain.evaluationMachine.EvaluationMachine;
 import io.github.sztuwebclub.webvoyager.domain.evaluationMachine.EvaluationTask;
 import io.github.sztuwebclub.webvoyager.domain.evaluationMachine.JudgeResult;
-import io.github.sztuwebclub.webvoyager.domain.service.EvaluationMachineService;
+import io.github.sztuwebclub.webvoyager.domain.service.IEvaluationMachineService;
 import jakarta.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 该类提供了注册、移除、获取、分配任务和更新评测机状态的方法。
  */
 @Service
-public class EvaluationMachineServiceImpl implements EvaluationMachineService {
+public class EvaluationMachineServiceImpl implements IEvaluationMachineService {
     /**
      * 存储评测机的 Map
      */
