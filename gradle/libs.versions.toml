@@ -10,6 +10,7 @@ mybatisplus = "3.5.5"
 jjwt = "0.12.5"
 log4j = "2.22.0"
 jakarta = "2.1.1"
+curator = "5.6.0"
 
 [libraries]
 # springboot
@@ -35,6 +36,9 @@ log4j-slf4j2 = { group = "org.apache.logging.log4j", name = "log4j-slf4j2-impl",
 
 # websocket
 springboot-websocket = { group = "org.springframework.boot", name = "spring-boot-starter-websocket", version.ref = "springboot" }
+
+# zookeeper
+curator = { group = "org.apache.curator", name = "curator-recipes", version.ref = "curator" }
 
 [plugins]
 springboot = { id = "org.springframework.boot", version.ref = "springboot" }

@@ -8,6 +8,7 @@ version = libs.versions.project.get()
 dependencies {
     implementation(project(":web-voyager-ddd-const"))
     implementation(libs.springboot.web)
+    implementation(libs.curator)
     implementation(libs.mybatis.plus)
     implementation(libs.jakarta)
     implementation(libs.lombok)

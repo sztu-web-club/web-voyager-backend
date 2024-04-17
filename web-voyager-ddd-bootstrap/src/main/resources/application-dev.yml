@@ -16,3 +16,9 @@ spring:
       schema-locations: classpath:/schema.sql
       mode: always
       platform: mysql
+zookeeper:
+  baseSleepTime: 2000
+  maxRetries: 3
+  connectString: localhost:2181,localhost:2182,localhost:2183
+  sessionTimeoutMs: 10000
+  connectionTimeoutMs: 10000

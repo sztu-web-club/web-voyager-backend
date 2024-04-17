@@ -19,15 +19,12 @@ dependencies {
     implementation(libs.springboot.data.jdbc)
     implementation(libs.springboot.security)
     implementation(libs.springboot.actuator)
+    implementation(libs.curator)
     implementation(libs.log4j.core)
 
     runtimeOnly(libs.mysql)
     developmentOnly(libs.springboot.compose)
     testImplementation(libs.log4j.slf4j2)
-
-    dependencies {
-        implementation("org.mybatis:mybatis-spring:3.0.3")
-    }
 }
 
 tasks.bootJar {

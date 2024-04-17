@@ -8,6 +8,4 @@ import java.io.Serializable;
 public class UserLoginRequest implements Serializable {
     private String username;
     private String password;
-    private String uuid;
-    private String timestamp;
 }
