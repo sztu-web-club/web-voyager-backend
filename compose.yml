@@ -1,17 +1,18 @@
 version: '3.1'
 
 services:
+  # fuck you spring boot docker compose for ignoring my config
   mysql:
     image: mysql:latest
+    hostname: mysql
     environment:
       MYSQL_DATABASE: web_voyager
       MYSQL_ROOT_PASSWORD: elysiaEgo#@#1026
     ports:
       - "3307:3306"
-    labels:
-      org.springframework.boot.service-connection: mysql
   redis:
     image: redis:latest
+    hostname: redis
     ports:
       - "6378:6379"
   zoo1:
@@ -23,8 +24,6 @@ services:
     environment:
       ZOO_MY_ID: 1
       ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
-    labels:
-      org.springframework.boot.service-connection: zoo1
 
   zoo2:
     image: zookeeper
@@ -35,8 +34,6 @@ services:
     environment:
       ZOO_MY_ID: 2
       ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
-    labels:
-      org.springframework.boot.service-connection: zoo2
 
   zoo3:
     image: zookeeper
@@ -47,5 +44,3 @@ services:
     environment:
       ZOO_MY_ID: 3
       ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
-    labels:
-      org.springframework.boot.service-connection: zoo3

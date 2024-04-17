@@ -14,6 +14,7 @@ dependencies {
 
     implementation(libs.alibaba.druid)
     implementation(libs.mybatis.plus)
+    implementation(libs.mybatis.spring)
     implementation(libs.springboot.web)
     implementation(libs.springboot.data.redis)
     implementation(libs.springboot.data.jdbc)
@@ -23,7 +24,6 @@ dependencies {
     implementation(libs.log4j.core)
 
     runtimeOnly(libs.mysql)
-    developmentOnly(libs.springboot.compose)
     testImplementation(libs.log4j.slf4j2)
 }
 
