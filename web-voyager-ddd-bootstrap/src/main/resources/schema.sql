@@ -14,7 +14,7 @@ create table if not exists contest_problem
 (
     problem_id int          not null comment '问题id',
     contest_id int          not null comment '比赛id',
-    title      varchar(200) not null comment '比赛标题',
+    title      varchar(200) not null comment '题目标题',
     sequence   int          not null comment '题目顺序',
     index Index_contest_id(contest_id)
 );
@@ -98,15 +98,19 @@ create table `rank`
 (
     id      bigint auto_increment  comment '主键id'
         primary key,
-    contest_id int           not null comment '比赛id',
-    user_id    int           not null comment '用户id',
-    penalty    int           not null comment '累计消耗',
-    solved     int default 0 not null comment '解决题目数量'
+    contest_id    int           not null comment '比赛id',
+    user_id       int           not null comment '用户id',
+    solved        int default 0 not null comment '解决题目数量',
+    end_penalty   int           not null comment '时间消耗',
+    false_penalty int           not null comment '错误题解消耗'
 );
 
 create table rank_solution
 (
     rank_id       int      not null comment '排行id',
+    solution_id   int      not null comment '问题id',
     complete_time datetime not null comment '完成时间',
-    total_false   int      not null comment '解题前错误题解总数'
+    total_false   int      not null comment '解题前错误题解总数',
+    title         varchar(200) not null comment '题目标题',
+    sequence      int      not null comment '题目顺序'
 )
