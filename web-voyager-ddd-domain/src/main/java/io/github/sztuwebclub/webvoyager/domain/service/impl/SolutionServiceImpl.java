@@ -5,14 +5,11 @@ import io.github.sztuwebclub.webvoyager.domain.service.ISolutionService;
 import io.github.sztuwebclub.webvoyager.domain.solution.ISolutionRepo;
 import io.github.sztuwebclub.webvoyager.domain.solution.Solution;
 import jakarta.annotation.Resource;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class SolutionServiceImpl implements ISolutionService {

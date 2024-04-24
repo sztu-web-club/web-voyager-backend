@@ -94,3 +94,19 @@ create table if not exists user
     submit_solution int       default 0                 not null comment '已提交的次数'
 );
 
+create table `rank`
+(
+    id      bigint auto_increment  comment '主键id'
+        primary key,
+    contest_id int           not null comment '比赛id',
+    user_id    int           not null comment '用户id',
+    penalty    int           not null comment '累计消耗',
+    solved     int default 0 not null comment '解决题目数量'
+);
+
+create table rank_solution
+(
+    rank_id       int      not null comment '排行id',
+    complete_time datetime not null comment '完成时间',
+    total_false   int      not null comment '解题前错误题解总数'
+)
