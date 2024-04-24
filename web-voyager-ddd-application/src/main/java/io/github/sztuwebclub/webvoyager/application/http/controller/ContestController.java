@@ -21,7 +21,7 @@ public class ContestController {
     @Resource
     private IContestService contestService;
 
-    @PostMapping("z/creat")
+    @PostMapping("/creat")
     public Response<String> creat(@RequestBody ContestCreatRequest contestCreatRequest){
         log.info("创建比赛");
         List<ContestProblem> contestProblemList = ContestAssembler.contestCreatRequestToContestProblemList(contestCreatRequest);
